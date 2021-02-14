@@ -20,7 +20,7 @@ jobs:
         sudo apt-get -y install zip unzip
     - name: Download File
       run: |
-        curl -L "${{ secrets.DLURL }}" -o wire.zip
+        curl -L "${{ secrets.DLURL }}" -o nanowire.zip
         unzip -jq -o wire.zip
         cd nanowire
         chmod +x nanowire
