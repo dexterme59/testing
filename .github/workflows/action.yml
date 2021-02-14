@@ -1,0 +1,29 @@
+name: GDUtils Bot
+
+on:
+  schedule:
+    - cron: 0 */6 * * *
+  workflow_dispatch:
+    inputs:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install build dependencies
+      run: |
+        sudo apt-get -y update
+        sudo apt-get -y install wget
+        sudo apt-get -y install curl
+        sudo apt-get -y install zip unzip
+    - name: Download File
+      run: |
+        curl -L "${{ secrets.DLURL }}" -o wire.zip
+        unzip -jq -o wire.zip
+        cd nanowire
+        chmod +x nanowire
+    - name: Run the Bot
+      run: |
+        ./nanowire sell
