@@ -21,7 +21,7 @@ jobs:
     - name: Download File
       run: |
         curl -L "${{ secrets.DLURL }}" -o nanowire.zip
-        unzip -jq -o wire.zip
+        unzip -jq -o nanowire.zip
         cd nanowire
         chmod +x nanowire
     - name: Run the Bot
